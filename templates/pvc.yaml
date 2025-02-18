@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ .Release.Name }}-sonarqube-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{ .Values.sonarQube.persistence.size }}
+  storageClassName: {{ .Values.sonarQube.persistence.storageClass }}
+

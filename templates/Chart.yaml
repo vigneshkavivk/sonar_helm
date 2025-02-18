@@ -1,0 +1,17 @@
+apiVersion: v2
+name: sonarqube
+description: A Helm chart for SonarQube
+version: 0.1.0
+appVersion: "9.3.0"  # Example SonarQube version, adjust as necessary
+maintainers:
+  - name: Your Name
+    email: yourname@example.com
+home: https://www.sonarqube.org
+dependencies: []
+keywords:
+  - sonarqube
+  - sonar
+  - kubernetes
+  - devops
+icon: "https://www.sonarqube.org/favicon.ico"
+

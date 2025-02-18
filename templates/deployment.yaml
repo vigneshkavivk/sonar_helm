@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-sonarqube
+  labels:
+    app: sonarqube
+spec:
+  replicas: {{ .Values.sonarQube.replicaCount }}
+  selector:
+    matchLabels:
+      app: sonarqube
+  template:
+    metadata:
+      labels:
+        app: sonarqube
+    spec:
+      containers:
+        - name: sonarqube
+          image: "{{ .Values.sonarQube.image.repository }}:{{ .Values.sonarQube.image.tag }}"
+          ports:
+            - containerPort: 9000
+          resources:
+            requests:
+              memory: {{ .Values.sonarQube.resources.requests.memory }}
+              cpu: {{ .Values.sonarQube.resources.requests.cpu }}
+            limits:
+              memory: {{ .Values.sonarQube.resources.limits.memory }}
+              cpu: {{ .Values.sonarQube.resources.limits.cpu }}
+          volumeMounts:
+            - name: sonarqube-pvc
+              mountPath: /opt/sonarqube/data
+      volumes:
+        - name: sonarqube-pvc
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-sonarqube-pvc
+
