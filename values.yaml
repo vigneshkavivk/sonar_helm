@@ -22,3 +22,8 @@ persistence:
   enabled: true
   storageClass: "standard"
   size: 10Gi
+  
+serviceAccount:
+  create: true
+  automount: true  # This prevents another nil error
+  annotations: {}  # Ensure this is defined, even if empty
