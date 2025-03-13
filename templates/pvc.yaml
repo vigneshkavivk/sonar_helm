@@ -8,5 +8,6 @@ spec:
   resources:
     requests:
       storage: {{ .Values.persistence.size }}
-  storageClassName: {{ .Values.sonarQube.persistence.storageClass }}
+  storageClassName: {{ .Values.persistence.storageClass }}
+
 
