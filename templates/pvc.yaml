@@ -7,6 +7,6 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: {{ .Values.sonarQube.persistence.size }}
+      storage: {{ .Values.persistence.size }}
   storageClassName: {{ .Values.sonarQube.persistence.storageClass }}
 
