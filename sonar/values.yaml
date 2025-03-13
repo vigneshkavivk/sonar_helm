@@ -33,3 +33,14 @@ autoscaling:
   minReplicas: 1
   maxReplicas: 5
   targetCPUUtilizationPercentage: 80
+
+ingress:
+  enabled: false  # Set to true if you need Ingress
+  annotations: {}
+  hosts:
+    - host: sonarqube.example.com
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+
