@@ -11,5 +11,7 @@ spec:
     - protocol: TCP
       port: {{ .Values.sonarQube.service.port }}
       targetPort: 9000
+  port: {{ .Values.sonarQube.service.port }}
   type: {{ .Values.sonarQube.service.type }}
+
 
