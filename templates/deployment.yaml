@@ -5,7 +5,7 @@ metadata:
   labels:
     app: sonarqube
 spec:
-  replicas: {{ .Values.sonarQube.replicaCount }}
+  replicas: {{ .Values.sonarQube.replicaCount | default 1 }}
   selector:
     matchLabels:
       app: sonarqube
@@ -16,16 +16,17 @@ spec:
     spec:
       containers:
         - name: sonarqube
-          image: "{{ .Values.sonarQube.image.repository }}:{{ .Values.sonarQube.image.tag }}"
+          image: "{{ .Values.sonarQube.image.repository | default "sonarqube" }}:{{ .Values.sonarQube.image.tag | default "latest" }}"
           ports:
             - containerPort: 9000
           resources:
             requests:
-              memory: {{ .Values.sonarQube.resources.requests.memory }}
-              cpu: {{ .Values.sonarQube.resources.requests.cpu }}
+              memory: "{{ .Values.sonarQube.resources.requests.memory | default "512Mi" }}"
+              cpu: "{{ .Values.sonarQube.resources.requests.cpu | default "500m" }}"
             limits:
-              memory: {{ .Values.sonarQube.resources.limits.memory }}
-              cpu: {{ .Values.sonarQube.resources.limits.cpu }}
+              memory: "{{ .Values.sonarQube.resources.limits.memory | default "1Gi" }}"
+              cpu: "{{ .Values.sonarQube.resources.limits.cpu | default "1" }}"
+
           volumeMounts:
             - name: sonarqube-pvc
               mountPath: /opt/sonarqube/data
@@ -33,4 +34,3 @@ spec:
         - name: sonarqube-pvc
           persistentVolumeClaim:
             claimName: {{ .Release.Name }}-sonarqube-pvc
-
