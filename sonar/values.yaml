@@ -6,7 +6,7 @@ sonarQube:
     tag: "9.3.0-community"
     pullPolicy: IfNotPresent
 
-  resources:  # ✅ Moved `resources` inside `sonarQube`
+  resources:  #  Moved `resources` inside `sonarQube`
     requests:
       memory: "2Gi"
       cpu: "1"
