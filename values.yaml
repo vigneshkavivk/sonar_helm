@@ -27,3 +27,10 @@ serviceAccount:
   create: true
   automount: true  # This prevents another nil error
   annotations: {}  # Ensure this is defined, even if empty
+
+autoscaling:
+  enabled: false  # Change to true if you want HPA enabled
+  minReplicas: 1
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 80
+
