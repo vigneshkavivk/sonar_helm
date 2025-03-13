@@ -22,7 +22,7 @@ persistence:
   enabled: true
   storageClass: "standard"
   size: 10Gi
-  
+
 serviceAccount:
   create: true
   automount: true  # This prevents another nil error
@@ -33,4 +33,3 @@ autoscaling:
   minReplicas: 1
   maxReplicas: 5
   targetCPUUtilizationPercentage: 80
-
