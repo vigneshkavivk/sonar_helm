@@ -6,17 +6,17 @@ sonarQube:
     tag: "9.3.0-community"
     pullPolicy: IfNotPresent
 
-service:
-  type: ClusterIP
-  port: 9000
-
-  resources:
+  resources:  # ✅ Moved `resources` inside `sonarQube`
     requests:
       memory: "2Gi"
       cpu: "1"
     limits:
       memory: "4Gi"
       cpu: "2"
+
+service:
+  type: ClusterIP
+  port: 9000
 
 persistence:
   enabled: true
