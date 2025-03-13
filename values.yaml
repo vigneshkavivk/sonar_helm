@@ -1,24 +1,24 @@
-# values.yaml
 sonarQube:
-  version: "9.3.0"  # The SonarQube version
-  replicaCount: 1    # Number of SonarQube replicas (pods)
+  version: "9.3.0"
+  replicaCount: 1
   image:
     repository: sonarqube
-    tag: "9.3.0-community"  # Docker image tag
+    tag: "9.3.0-community"
     pullPolicy: IfNotPresent
-  service:
-    type: ClusterIP
-    port: 9000
-  resources:
-    requests:
-      memory: "2Gi"
-      cpu: "1"
-    limits:
-      memory: "4Gi"
-      cpu: "2"
 
-  persistence:
-    enabled: true
-    storageClass: "standard"  # Change to your Kubernetes storage class
-    size: 10Gi
+service:
+  type: ClusterIP
+  port: 9000
 
+resources:
+  requests:
+    memory: "2Gi"
+    cpu: "1"
+  limits:
+    memory: "4Gi"
+    cpu: "2"
+
+persistence:
+  enabled: true
+  storageClass: "standard"
+  size: 10Gi
